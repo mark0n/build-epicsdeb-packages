@@ -78,10 +78,10 @@ Vagrant.configure("2") do |config|
     dpkg -i /home/vagrant/{dh-exec-epics_8.19_all.deb,epics-debhelper_8.19_all.deb}
     cd /home/vagrant/
 
-    gbp clone --debian-branch=uc3 https://github.com/mark0n/epics-base-package.git
+    gbp clone --debian-branch=debian10 https://github.com/mark0n/epics-base-package.git
     cd epics-base-package/
     apt-get install -y libreadline6-dev libncurses5-dev g++-mingw-w64 dh-systemd > /dev/null
-    gbp buildpackage -uc -us --git-debian-branch=uc3
+    gbp buildpackage -uc -us --git-debian-branch=debian10
     cd /home/vagrant/
     dpkg -i *.deb
   SHELL
