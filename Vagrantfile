@@ -119,5 +119,23 @@ Vagrant.configure("2") do |config|
     cd sscan/
     gbp buildpackage -uc -us --git-debian-branch=v2.11.3
     cd /home/vagrant/
+    dpkg -i epics-sscan-dev_2.11.3-1_amd64.deb libepics-sscan2.11.3_2.11.3-1_amd64.deb
+
+    gbp clone --debian-branch=v3.7.3 https://github.com/mark0n/calc.git
+    cd calc/
+    gbp buildpackage -uc -us --git-debian-branch=v3.7.3
+    cd /home/vagrant/
+    dpkg -i epics-calc-dev_3.7.3-1_amd64.deb libcalc3.7.3_3.7.3-1_amd64.deb
+
+    gbp clone --debian-branch=v2.8.9 https://github.com/mark0n/stream.git
+    cd stream/
+    apt-get install -y libpcre3-dev
+    gbp buildpackage -uc -us --git-debian-branch=v2.8.9
+    cd /home/vagrant/
+
+    gbp clone --debian-branch=v1.7.2 https://github.com/mark0n/busy.git
+    cd busy/
+    gbp buildpackage -uc -us --git-debian-branch=v1.7.2
+    cd /home/vagrant/
   SHELL
 end
