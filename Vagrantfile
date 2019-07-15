@@ -84,5 +84,28 @@ Vagrant.configure("2") do |config|
     gbp buildpackage -uc -us --git-debian-branch=debian10
     cd /home/vagrant/
     dpkg -i *.deb
+
+    gbp clone --debian-branch=v4.35 https://github.com/mark0n/asyn-1.git
+    cd asyn-1/
+    apt-get install -y libusb-1.0-0-dev
+    gbp buildpackage -uc -us --git-debian-branch=v4.35
+    cd /home/vagrant/
+    dpkg -i *.deb
+
+    gbp clone --debian-branch=v5.9 https://github.com/mark0n/autosave-package.git
+    cd autosave-package/
+    gbp buildpackage -uc -us --git-debian-branch=v5.9
+    cd /home/vagrant/
+
+    gbp clone --debian-branch=v3.6 https://github.com/mark0n/caputlog.git
+    cd caputlog/
+    apt-get install -y python3-sphinx
+    gbp buildpackage -uc -us --git-debian-branch=v3.6
+    cd /home/vagrant/
+
+    gbp clone --debian-branch=v3.1.16 https://github.com/mark0n/deviocstats.git
+    cd deviocstats/
+    gbp buildpackage -uc -us --git-debian-branch=v3.1.16
+    cd /home/vagrant/
   SHELL
 end
