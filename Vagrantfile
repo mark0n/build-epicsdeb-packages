@@ -107,5 +107,17 @@ Vagrant.configure("2") do |config|
     cd deviocstats/
     gbp buildpackage -uc -us --git-debian-branch=v3.1.16
     cd /home/vagrant/
+
+    gbp clone --debian-branch=debian10 https://github.com/mark0n/seq.git
+    cd seq/
+    apt-get install -y re2c
+    gbp buildpackage -uc -us --git-debian-branch=debian10
+    cd /home/vagrant/
+    dpkg -i epics-seq-dev_2.2.6-2_amd64.deb libseq2.2.6_2.2.6-2_amd64.deb
+
+    gbp clone --debian-branch=v2.11.3 https://github.com/mark0n/sscan.git
+    cd sscan/
+    gbp buildpackage -uc -us --git-debian-branch=v2.11.3
+    cd /home/vagrant/
   SHELL
 end
