@@ -143,5 +143,17 @@ Vagrant.configure("2") do |config|
     apt-get install -y cmake
     gbp buildpackage -uc -us --git-debian-branch=debian10
     cd /home/vagrant/
+
+    gbp clone --debian-branch=debian10 https://github.com/mark0n/devlib2.git
+    cd devlib2/
+    gbp buildpackage -uc -us --git-debian-branch=debian10
+    cd /home/vagrant/
+    dpkg -i epics-devlib2-dev_2.10-2_amd64.deb libdevlib2.10_2.10-2_amd64.deb
+
+    gbp clone --debian-branch=debian10 https://github.com/mark0n/mrfioc2-package.git
+    cd mrfioc2-package/
+    apt-get install -y dkms
+    gbp buildpackage -uc -us --git-debian-branch=debian10
+    cd /home/vagrant/
   SHELL
 end
