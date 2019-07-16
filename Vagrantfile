@@ -137,5 +137,11 @@ Vagrant.configure("2") do |config|
     cd busy/
     gbp buildpackage -uc -us --git-debian-branch=v1.7.2
     cd /home/vagrant/
+
+    gbp clone --debian-branch=debian10 https://github.com/epicsdeb/cmake4epics.git
+    cd cmake4epics/
+    apt-get install -y cmake
+    gbp buildpackage -uc -us --git-debian-branch=debian10
+    cd /home/vagrant/
   SHELL
 end
