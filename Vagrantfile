@@ -155,5 +155,11 @@ Vagrant.configure("2") do |config|
     apt-get install -y dkms
     gbp buildpackage -uc -us --git-debian-branch=debian10
     cd /home/vagrant/
+
+    gbp clone --debian-branch=v1.0.0.1 https://github.com/epicsdeb/epics-snmp.git
+    cd epics-snmp/
+    apt-get install -y libsnmp-dev
+    gbp buildpackage -uc -us --git-debian-branch=v1.0.0.1
+    cd /home/vagrant/
   SHELL
 end
