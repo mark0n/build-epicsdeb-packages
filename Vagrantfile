@@ -161,5 +161,10 @@ Vagrant.configure("2") do |config|
     apt-get install -y libsnmp-dev
     gbp buildpackage -uc -us --git-debian-branch=v1.0.0.1
     cd /home/vagrant/
+
+    gbp clone --debian-branch=debian10 https://github.com/epicsdeb/epics-mcore-utils.git
+    cd epics-mcore-utils/
+    gbp buildpackage -uc -us --git-debian-branch=debian10
+    cd /home/vagrant/
   SHELL
 end
