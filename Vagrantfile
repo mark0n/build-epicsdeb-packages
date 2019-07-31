@@ -92,9 +92,9 @@ Vagrant.configure("2") do |config|
     cd /home/vagrant/
     dpkg -i *.deb
 
-    gbp clone --debian-branch=v5.9 https://github.com/mark0n/autosave-package.git
+    gbp clone --debian-branch=v5.10 https://github.com/mark0n/autosave-package.git
     cd autosave-package/
-    gbp buildpackage -uc -us --git-debian-branch=v5.9
+    gbp buildpackage -uc -us --git-debian-branch=v5.10
     cd /home/vagrant/
 
     gbp clone --debian-branch=v3.6 https://github.com/mark0n/caputlog.git
