@@ -85,10 +85,10 @@ Vagrant.configure("2") do |config|
     cd /home/vagrant/
     dpkg -i *.deb
 
-    gbp clone --debian-branch=v4.35 https://github.com/mark0n/asyn-1.git
+    gbp clone --debian-branch=v4.36 https://github.com/mark0n/asyn-1.git
     cd asyn-1/
     apt-get install -y libusb-1.0-0-dev
-    gbp buildpackage -uc -us --git-debian-branch=v4.35
+    gbp buildpackage -uc -us --git-debian-branch=v4.36
     cd /home/vagrant/
     dpkg -i *.deb
 
